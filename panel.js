@@ -35,10 +35,42 @@ function previewFile() { //calls the function named previewFile()
 
 
 
-document.querySelector('#executescript').addEventListener('click', function() {
-    sendObjectToInspectedPage({action: "code", 
-        content: "document.body.insertAdjacentHTML('afterbegin', '<img class = \"overlayImagePerfectPixels\" style = \"z-index: 900000000;opacity: 0.1; position: absolute; top: 0; left: 0; width: 100%;\" src =\"" + image + "\">')"  
+var topValue;
+var bottomValue;
+var leftValue;
+var rightValue;
+var opacity = document.getElementById('opacity');
+var opacityValue = document.getElementById('opacityValue');
+  opacityValue.innerHTML = opacity.value;
+transparency = opacity.value;
+var topElement = document.getElementById('top');
+var leftElement = document.getElementById('left');
+
+topElement.addEventListener("input", function() {
+   topValue = topElement.value;
+    // injectImage();
+     sendObjectToInspectedPage({action: "code", 
+        content: "document.getElementById('overlayImagePerfectPixels').style.top=\"" + topValue + "px\""
     });
+ });
+leftElement.addEventListener("input", function() {
+   leftValue = leftElement.value;
+    sendObjectToInspectedPage({action: "code", 
+        content: "document.getElementById('overlayImagePerfectPixels').style.left=\"" + leftElement + "px\""
+    });
+    // injectImage();
+ });
+
+opacity.addEventListener("input", function() {
+  opacityValue.innerHTML = opacity.value;
+  transparency = opacity.value/100;
+   sendObjectToInspectedPage({action: "code", 
+        content: "document.getElementById('overlayImagePerfectPixels').style.opacity=\"" + transparency + "\""
+    });
+});
+
+document.querySelector('#executescript').addEventListener('click', function() {
+  injectImage();
 }, false);
 
 document.querySelector('#insertscript').addEventListener('click', function() {
@@ -46,10 +78,18 @@ document.querySelector('#insertscript').addEventListener('click', function() {
 
 }, false);
 
-document.querySelector('#insertmessagebutton').addEventListener('click', function() {
-    sendObjectToInspectedPage({action: "code", content: "document.body.innerHTML='<button>Send message to DevTools</button>'"});
-    sendObjectToInspectedPage({action: "script", content: "messageback-script.js"});
-}, false);
+function injectImage() {
+   //Inject script to clear
+  sendObjectToInspectedPage({action: "script", content: "inserted-script.js"});
+    sendObjectToInspectedPage({action: "code", 
+        content: "document.body.insertAdjacentHTML('afterbegin', '<img id = \"overlayImagePerfectPixels\" class = \"overlayImagePerfectPixels\" style = \"z-index: 900000000;opacity: " + transparency/100 + "; position: absolute; top:" + topValue + "px; bottom: " + bottomValue + "px; right: " + rightValue + "px; left: " + leftValue + "px; width: 100%;\" src =\"" + image + "\">')"  
+    });
+}
+
+// document.querySelector('#insertmessagebutton').addEventListener('click', function() {
+//     sendObjectToInspectedPage({action: "code", content: "document.body.innerHTML='<button>Send message to DevTools</button>'"});
+//     sendObjectToInspectedPage({action: "script", content: "messageback-script.js"});
+// }, false);
 
 
 

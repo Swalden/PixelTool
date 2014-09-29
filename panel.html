@@ -3,17 +3,35 @@
 <html>
 <head>
 <style>
+
+body{
+  font-family: helvetica, arial, sans-serif;
+}
 .button {
     width: 200px;
     height: 50px; 
     color: white;
     text-align: center;
     margin-top: 20px;
+    -webkit-appearance: none;
+    border: none;
+    box-shadow: 1px 1px 1px black;
 }
+
+.button:focus {
+  outline: none;
+}
+
+.button:active {
+  box-shadow: none;
+} 
+
+
 
 .button-primary {
     background-color: lightblue;
     float: left;
+    color: black;
 }
 .button-secondary {
     background-color: grey;
@@ -23,6 +41,10 @@
 .container {
     width: 420px;
 }
+.text-input {
+  height: 30px;
+  font-size: 1.2em;
+}
 </style>
 </head>
 <body id = 'body'>
@@ -30,14 +52,31 @@
     <!-- <button id="insertmessagebutton">Insert button to send a message from page to devtools</button> -->
     <script src="messaging.js"></script>
 <h2>Perfect Pixels</h2>
+<h3>Select an image to overlay on your frontend</h3>
 <div class = "left">
 <input id = "input" type="file">
 <br>
-<img src="" height="200" alt="Image preview...">
+<img src=""  width = "150" alt="Image preview...">
+</br>
+</br>
+</br>
 </div>
 <div class = "right">
+  <label>Pixel distance top</label>
+  <input class = "text-input"id = "top" type="number" value = "0"> </br>
+<!--   <label>Pixel distance right</label>
+    <input id = "right" type="number"value = "0"></br> -->
+  </br>
+    <label>Pixel distance left</label>
+      <input class = "text-input" id = "left" type="number"value = "0"></br>
+<!--       <label>Pixel distance bottom</label>
+        <input id = "bottom" type="number"value = "0"></br> -->
   <!-- <label>Width:</label> -->
   <!-- <input type = "text"> -->
+</br>
+  <label>Opacity</label>
+  <div id = "opacityValue"></div>
+  <input id = "opacity" value = "40" type="range">
   <div class = "container">
     <button class = "button button-primary" id="executescript">Add image overlay</button>
     <button class = "button button-secondary" id="insertscript">Remove image overlay</button>
