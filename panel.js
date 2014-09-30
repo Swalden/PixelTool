@@ -41,14 +41,13 @@ var leftValue;
 var rightValue;
 var opacity = document.getElementById('opacity');
 var opacityValue = document.getElementById('opacityValue');
-  opacityValue.innerHTML = opacity.value;
+opacityValue.innerHTML = opacity.value;
 transparency = opacity.value;
 var topElement = document.getElementById('top');
 var leftElement = document.getElementById('left');
 
 topElement.addEventListener("input", function() {
    topValue = topElement.value;
-    // injectImage();
      sendObjectToInspectedPage({action: "code", 
         content: "document.getElementById('overlayImagePerfectPixels').style.top=\"" + topValue + "px\""
     });
@@ -58,7 +57,6 @@ leftElement.addEventListener("input", function() {
     sendObjectToInspectedPage({action: "code", 
         content: "document.getElementById('overlayImagePerfectPixels').style.left=\"" + leftElement + "px\""
     });
-    // injectImage();
  });
 
 opacity.addEventListener("input", function() {
@@ -75,15 +73,14 @@ document.querySelector('#executescript').addEventListener('click', function() {
 
 document.querySelector('#insertscript').addEventListener('click', function() {
     sendObjectToInspectedPage({action: "script", content: "inserted-script.js"});
-
 }, false);
 
 function injectImage() {
    //Inject script to clear
   sendObjectToInspectedPage({action: "script", content: "inserted-script.js"});
     sendObjectToInspectedPage({action: "code", 
-        content: "document.body.insertAdjacentHTML('afterbegin', '<img id = \"overlayImagePerfectPixels\" class = \"overlayImagePerfectPixels\" style = \"z-index: 900000000;opacity: " + transparency/100 + "; position: absolute; top:" + topValue + "px; bottom: " + bottomValue + "px; right: " + rightValue + "px; left: " + leftValue + "px; width: 100%;\" src =\"" + image + "\">')"  
-    });
+        content: "document.body.insertAdjacentHTML('afterbegin', '<img id = \"overlayImagePerfectPixels\" class = \"overlayImagePerfectPixels\" style = \"z-index: 900000000; pointer-events: none; opacity: " + transparency/100 + "; position: absolute; top:" + topValue + "px; bottom: " + bottomValue + "px; right: " + rightValue + "px; left: " + leftValue + "px; width: 100%;\" src =\"" + image + "\">')"  
+    });  
 }
 
 // document.querySelector('#insertmessagebutton').addEventListener('click', function() {
