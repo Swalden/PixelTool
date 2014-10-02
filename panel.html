@@ -10,6 +10,7 @@ body{
 .button {
     width: 200px;
     height: 50px; 
+    font-size: 1em;
     color: white;
     text-align: center;
     margin-top: 20px;
@@ -26,7 +27,9 @@ body{
   box-shadow: none;
 } 
 
-
+.controls {
+  display: none;
+}
 
 .button-primary {
     background-color: lightblue;
@@ -34,8 +37,13 @@ body{
     color: black;
 }
 .button-secondary {
-    background-color: grey;
+    background-color: lightgrey;
+    color: black;
     float: right;
+}
+
+img {
+  display: none;
 }
 
 .container {
@@ -52,7 +60,7 @@ body{
     <!-- <button id="insertmessagebutton">Insert button to send a message from page to devtools</button> -->
     <script src="messaging.js"></script>
 <h2>Perfect Pixels</h2>
-<h3>Select an image to overlay on your frontend</h3>
+<p>Select an image to overlay on your frontend</p>
 <div class = "left">
 <input id = "input" type="file">
 <br>
@@ -61,13 +69,13 @@ body{
 </br>
 </br>
 </div>
-<div class = "right">
-  <label>Pixel distance top</label>
+<div class = "controls">
+  <label>X-axis</label>
   <input class = "text-input"id = "top" type="number" value = "0"> </br>
 <!--   <label>Pixel distance right</label>
     <input id = "right" type="number"value = "0"></br> -->
   </br>
-    <label>Pixel distance left</label>
+    <label>Y-axis</label>
       <input class = "text-input" id = "left" type="number"value = "0"></br>
 <!--       <label>Pixel distance bottom</label>
         <input id = "bottom" type="number"value = "0"></br> -->
