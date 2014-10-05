@@ -1,8 +1,11 @@
 {
     "name": "PixelTool",
-    "version": "0.1",
+    "version": "1.0",
     "description": "Allows you to overlay a design to improve the precision of frontend development",
     "devtools_page": "devtools.html",
+    "icons": { 
+      "128": "icon_128.png" 
+    },
     "options_page": "panel.html",
     "background": {
         "scripts": [

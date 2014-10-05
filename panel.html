@@ -8,7 +8,8 @@ body{
   font-family: helvetica, arial, sans-serif;
 }
 .button {
-    width: 200px;
+    width: 48%;
+    min-width: 140px;
     height: 50px; 
     font-size: 1em;
     color: white;
@@ -17,6 +18,11 @@ body{
     -webkit-appearance: none;
     border: none;
     box-shadow: 1px 1px 1px black;
+}
+
+.opacity-range {
+  width: 100%;
+  max-width: 500px;
 }
 
 .button:focus {
@@ -29,6 +35,8 @@ body{
 
 .controls {
   display: none;
+  width: 50%;
+  min-width: 300px;
 }
 
 .button-primary {
@@ -42,16 +50,23 @@ body{
     float: right;
 }
 
-img {
+.image-preview {
   display: none;
 }
 
 .container {
-    width: 420px;
+    width: 100%;
 }
 .text-input {
   height: 30px;
   font-size: 1.2em;
+}
+
+@media screen and ( max-height: 669px ){
+    .controls {
+position: absolute;
+top: 110px;
+left: 378px;    }
 }
 </style>
 </head>
@@ -59,23 +74,23 @@ img {
       
     <!-- <button id="insertmessagebutton">Insert button to send a message from page to devtools</button> -->
     <script src="messaging.js"></script>
-<h2>Perfect Pixels</h2>
+<img src = "logo.png" width = "150px">
 <p>Select an image to overlay on your frontend</p>
 <div class = "left">
 <input id = "input" type="file">
 <br>
-<img src=""  width = "150" alt="Image preview...">
+<img class = "image-preview" src=""  width = "150" alt="Image preview...">
 </br>
 </br>
 </br>
 </div>
 <div class = "controls">
-  <label>X-axis</label>
+  <label>Y-axis</label>
   <input class = "text-input"id = "top" type="number" value = "0"> </br>
 <!--   <label>Pixel distance right</label>
     <input id = "right" type="number"value = "0"></br> -->
   </br>
-    <label>Y-axis</label>
+    <label>X-axis</label>
       <input class = "text-input" id = "left" type="number"value = "0"></br>
 <!--       <label>Pixel distance bottom</label>
         <input id = "bottom" type="number"value = "0"></br> -->
@@ -84,7 +99,7 @@ img {
 </br>
   <label>Opacity</label>
   <div id = "opacityValue"></div>
-  <input id = "opacity" value = "40" type="range">
+  <input class = "opacity-range" id = "opacity" value = "40" type="range">
   <div class = "container">
     <button class = "button button-primary" id="executescript">Add image overlay</button>
     <button class = "button button-secondary" id="insertscript">Remove image overlay</button>

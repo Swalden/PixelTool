@@ -11,7 +11,7 @@ window.onload = function() {
   input.addEventListener("change", previewFile);
 
 function previewFile() { //calls the function named previewFile()
-      var preview = document.querySelector('img'); //selects the query named img
+      var preview = document.querySelector('.image-preview'); //selects the query named img
        var controls = document.querySelector('.controls');
       var file = document.querySelector('input[type=file]').files[0]; //sames as here
       preview.style.display = "block";
@@ -55,9 +55,10 @@ topElement.addEventListener("input", function() {
     });
  });
 leftElement.addEventListener("input", function() {
+  console.log('left-heard');
    leftValue = leftElement.value;
     sendObjectToInspectedPage({action: "code", 
-        content: "document.getElementById('overlayImagePerfectPixels').style.left=\"" + leftElement + "px\""
+        content: "document.getElementById('overlayImagePerfectPixels').style.left=\"" + leftValue + "px\""
     });
  });
 
