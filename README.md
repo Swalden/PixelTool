@@ -6,6 +6,7 @@ Or you can install it at chrome://extensions/ locally using ‘Load unpacked ext
 
 ## Description ##
 Allows you to overlay a design to improve the precision of frontend development
+
 Overlay a design on a webpage for pixel perfect development.
 
 This extension comes with an easy to use UI thats sits out of the way as a devtools panel. It allows a developer or designer to add a transparent image over real HTML in order to achieve pixel perfect accuracy. 
